@@ -1,11 +1,13 @@
 <template>
-  <div  class="students-index">
-    <h1>All Students</h1>
-    <div >
-      <img src="https://pbs.twimg.com/profile_images/1050414908762939393/UKzYsgQg_400x400.jpg" />
-      <h2> {{ students[0].firstName}} </h2>
-      <p>Software Engineer</p>
-      <button>View Resume</button>
+  <div class="students-index">
+    <div v-for="student in students">
+      <h1>All Students</h1>
+      <div >
+        <img v-bind:src="student.photo" v-bind:alt="student.firstName"/>
+        <h2> {{ student.firstName}}  {{ student.lastName}}</h2>
+        <p>{{ student.shortBio}}</p>
+        <button>View Resume</button>
+      </div>
     </div>
   </div>
 </template>
