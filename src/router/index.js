@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import StudentsIndex from '../views/StudentsIndex.vue';
 import StudentsShow from '../views/StudentsShow.vue';
+import StudentsTest from '../views/StudentsTest.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/students/:id',
     name: 'students-show',
     component: StudentsShow,
+  },
+  {
+    path: '/student/:id',
+    name: 'students-test',
+    component: StudentsTest,
   },
   {
     path: '/about',
