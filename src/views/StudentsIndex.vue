@@ -49,12 +49,6 @@ h1 {
   border-radius: 10%;
 }
 
-.card {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  border-radius: 10%;
-}
-
 .card-title {
   font-weight: bold;
 }

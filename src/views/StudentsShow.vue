@@ -1,15 +1,18 @@
 <template>
   <div class="students-show">
       <div>
-        <h1>{{ user.first_name }}</h1>
-        <img v-bind:src="user.photo" v-bind:alt="user.first_name"/>
-        <button>Contact Info</button><br>
+        <br>
+        <br>
+        <h1>{{ user.first_name }} {{user.last_name}}</h1>
+        <img class="show-image" v-bind:src="user.photo" v-bind:alt="user.first_name"/>
+        <a href="#" class="btn btn-primary">Contact Info</a> <br> <br>
+        
         <span>{{ user.email }}</span>
         <span>{{ user.phone }}</span>
       </div>
 
       <section id="short-bio">
-        <p>{{ user.shortBio }}</p>
+        <p>{{ user.short_bio }}</p>
 
       </section>
       
@@ -38,15 +41,20 @@
         <span id="name">{{ skill.name }}</span> <br>
       </section>
       <section id='twitter'>
-        <a class="twitter-timeline" href="https://twitter.com/{TwitterDev}?ref_src=twsrc%5Etfw" >Tweets by TwitterDev</a> 
+        <a class="twitter-timeline" v-bind:href="twitter" >Tweets by {{user.twitter_handle}}</a> 
       </section>
       
   </div>
 </template>
 
 <style>
-img {
+.show-image {
   border-radius: 50%;
+  padding: 1em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }
 </style>
 
@@ -57,16 +65,19 @@ export default {
   data: function () {
     return {
       user: {},
+      twitter: "",
     };
   },
   created: function () {
     axios.get("/api/users/" + this.$route.params.id).then((response) => {
       console.log("users show", response);
       this.user = response.data;
+      this.twitter = `https://twitter.com/${this.user.twitter_handle}?ref_src=twsrc%5Etfw`;
     });
     let twitterScript = document.createElement("script");
     twitterScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
     document.head.appendChild(twitterScript);
+    console.log(`user: ${this.user.twitter_handle}`);
   },
   methods: {},
 };
