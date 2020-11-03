@@ -1,15 +1,18 @@
 <template>
   <div class="students-show">
       <div>
-        <h1>{{ user.first_name }}</h1>
-        <img v-bind:src="user.photo" v-bind:alt="user.first_name"/>
-        <button>Contact Info</button><br>
+        <br>
+        <br>
+        <h1>{{ user.first_name }} {{user.last_name}}</h1>
+        <img class="show-image" v-bind:src="user.photo" v-bind:alt="user.first_name"/>
+        <a href="#" class="btn btn-primary">Contact Info</a> <br> <br>
+        
         <span>{{ user.email }}</span>
         <span>{{ user.phone }}</span>
       </div>
 
       <section id="short-bio">
-        <p>{{ user.shortBio }}</p>
+        <p>{{ user.short_bio }}</p>
 
       </section>
       
@@ -45,8 +48,13 @@
 </template>
 
 <style>
-img {
+.show-image {
   border-radius: 50%;
+  padding: 1em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }
 </style>
 
