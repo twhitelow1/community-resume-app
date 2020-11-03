@@ -13,30 +13,32 @@
 
       </section>
       
-      <section id='experience'>
-        <span id="start_date">{{ user.experience.start_date }}</span>
-        <span id="end_date">{{ user.experience.end_date }}</span>
-        <span id="job_title">{{ user.experience.job_title }}</span>
-        <span id="company_name">{{ user.experience.company_name }}</span>
-        <span id="details">{{ user.experience.details }}</span>
+      <section id='experience' v-for="experience in user.experiences">
+        <span id="start_date">{{ experience.start_date }}</span><br>
+        <span id="end_date">{{ experience.end_date }}</span><br>
+        <span id="job_title">{{ experience.job_title }}</span><br>
+        <span id="company_name">{{ experience.company_name }}</span><br>
+        <span id="details">{{ experience.details }}</span><br>
 
       </section>
-      <section id='education'>
-        <span id="start_date">{{ user.education.start_date }}</span>
-        <span id="end_date">{{ user.education.end_date }}</span>
-        <span id="degree">{{ user.education.degree }}</span>
-        <span id="university_name">{{ user.education.university_name }}</span>
-        <span id="details">{{ user.education.details }}</span>
+      <section id='education' v-for="education in user.educations">
+        <span id="start_date">{{ education.start_date }}</span><br>
+        <span id="end_date">{{ education.end_date }}</span><br>
+        <span id="degree">{{ education.degree }}</span><br>
+        <span id="university_name">{{ education.university_name }}</span><br>
+        <span id="details">{{ education.details }}</span><br>
 
       </section>
-      <section id='projects'>
-        <span id="name">{{ user.projects.name }}</span>
-        <span id="description">{{ user.projects.description }}</span>
+      <section id='projects' v-for="project in user.projects">
+        <span id="name">{{ project.name }}</span><br>
+        <span id="description">{{ project.description }}</span><br>
       
       </section>
-      <section id='skills'>
-        <span id="name">{{ user.skills.name }}</span>
-      
+      <section id='skills' v-for="skill in user.skills">
+        <span id="name">{{ skill.name }}</span> <br>
+      </section>
+      <section id='twitter'>
+        <a class="twitter-timeline" href="https://twitter.com/{TwitterDev}?ref_src=twsrc%5Etfw" >Tweets by TwitterDev</a> 
       </section>
       
   </div>
@@ -58,10 +60,13 @@ export default {
     };
   },
   created: function () {
-    axios.get("/api/users/" + this.$route.params.id).then(response => {
+    axios.get("/api/users/" + this.$route.params.id).then((response) => {
       console.log("users show", response);
       this.user = response.data;
     });
+    let twitterScript = document.createElement("script");
+    twitterScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
+    document.head.appendChild(twitterScript);
   },
   methods: {},
 };
