@@ -1,20 +1,73 @@
 <template>
   <div class="students-index">
-    <div v-for="student in students">
-      <h1>All Students</h1>
-      <div >
-        <img v-bind:src="student.photo" v-bind:alt="student.firstName"/>
-        <h2> {{ student.firstName}}  {{ student.lastName}}</h2>
-        <p>{{ student.shortBio}}</p>
-        <button>View Resume</button>
+    <br />
+    <br />
+    <h1>All Students</h1>
+    <br>
+    <br>
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-4" v-for="student in students">
+        <div class="card">
+          <div class="card-body">
+             <img v-bind:src="student.photo" v-bind:alt="student.firstName" />
+            <h5 class="card-title">{{ student.firstName }} {{ student.lastName }}</h5>
+            <p class="card-text">{{ student.shortBio }}</p>
+           <a href="#" class="btn btn-primary">View Resume</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    </div>
+    </div>
 </template>
 
 <style>
+.students-index {
+  background-color: rgb(228, 224, 224);
+  /* background: #9cecfb;
+  background: -webkit-linear-gradient(to right, #0052d4, #65c7f7, #9cecfb);
+  background: linear-gradient(to right, #0052d4, #65c7f7, #9cecfb); */
+}
+
+h1 {
+  color: gray;
+  animation: fade-in 2s ease;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.card {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 10%;
+}
+
+.card {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 10%;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
 img {
   border-radius: 50%;
+  width: 70%;
+  padding: 1em;
+  margin-left: 1em;
+}
+
+a {
+  font-size: 20px;
 }
 </style>
 
