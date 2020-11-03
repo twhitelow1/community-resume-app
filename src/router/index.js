@@ -1,7 +1,8 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import StudentsIndex from '../views/StudentsIndex.vue';
+import StudentsShow from '../views/StudentsShow.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/students',
     name: 'students-index',
     component: StudentsIndex,
+  },
+  {
+    path: '/students/:id',
+    name: 'students-show',
+    component: StudentsShow,
   },
   {
     path: '/about',
