@@ -38,7 +38,7 @@
         <span id="name">{{ skill.name }}</span> <br>
       </section>
       <section id='twitter'>
-        <a class="twitter-timeline" href="https://twitter.com/{TwitterDev}?ref_src=twsrc%5Etfw" >Tweets by TwitterDev</a> 
+        <a class="twitter-timeline" v-bind:href="twitter" >Tweets by {{user.twitter_handle}}</a> 
       </section>
       
   </div>
@@ -57,16 +57,19 @@ export default {
   data: function () {
     return {
       user: {},
+      twitter: "",
     };
   },
   created: function () {
     axios.get("/api/users/" + this.$route.params.id).then((response) => {
       console.log("users show", response);
       this.user = response.data;
+      this.twitter = `https://twitter.com/${this.user.twitter_handle}?ref_src=twsrc%5Etfw`;
     });
     let twitterScript = document.createElement("script");
     twitterScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
     document.head.appendChild(twitterScript);
+    console.log(`user: ${this.user.twitter_handle}`);
   },
   methods: {},
 };
